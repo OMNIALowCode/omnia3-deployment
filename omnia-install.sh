@@ -62,7 +62,7 @@ unzip-from-link() {
 
 install_nginx() {
 	eval $invocation
-	apt-get install nginx=1.14.0-0ubuntu1.7 --assume-yes
+	apt-get install nginx=1.22.0-1ubuntu1.1 --assume-yes
 	return $?
 }
 
