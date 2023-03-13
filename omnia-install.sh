@@ -62,7 +62,7 @@ unzip-from-link() {
 
 install_nginx() {
 	eval $invocation
-	apt-get install nginx=1.14.0-0ubuntu1.7 --assume-yes
+	apt-get install nginx=1.22.0-1ubuntu1.1 --assume-yes
 	return $?
 }
 
@@ -71,7 +71,7 @@ install_netcore() {
 	curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin -c Current
 	wget -q https://packages.microsoft.com/config/ubuntu/$ubuntu_version/packages-microsoft-prod.deb
 	dpkg -i packages-microsoft-prod.deb
-	apt-get install apt-transport-https=1.6.12 --assume-yes
+	apt-get install apt-transport-https --assume-yes
 	add-apt-repository universe
 	apt-get update
 	apt-get install dotnet-sdk-3.1 --assume-yes
@@ -81,8 +81,8 @@ install_netcore() {
 install_psql() {
 	eval $invocation
 	
-	apt-get install postgresql=10+190ubuntu0.1 --assume-yes
-	apt-get install postgresql-contrib=10+190ubuntu0.1 --assume-yes
+	apt-get install postgresql=12+214ubuntu0.1 --assume-yes
+	apt-get install postgresql-contrib=12+214ubuntu0.1 --assume-yes
 	sudo -u postgres createuser --superuser omnia -P
 	
 	return $?
@@ -123,13 +123,9 @@ get_legacy_os_name_from_platform() {
     eval $invocation
 
     platform="$1"
-    case "$platform" in
-        "ubuntu.16.04")
-            echo "ubuntu.16.04"
-            return 0
-            ;;
-        "ubuntu.18.04")
-            echo "ubuntu.18.04"
+    case "$platform" in        
+		"ubuntu.20.04")
+            echo "ubuntu.20.04"
             return 0
             ;;
     esac
